@@ -27,22 +27,22 @@
  * OpenLayers.Util.pagePosition is based on Yahoo's getXY method, which is
  * Copyright (c) 2006, Yahoo! Inc.
  * All rights reserved.
- * 
+ *
  * Redistribution and use of this software in source and binary forms, with or
  * without modification, are permitted provided that the following conditions
  * are met:
- * 
+ *
  * * Redistributions of source code must retain the above copyright notice,
  *   this list of conditions and the following disclaimer.
- * 
+ *
  * * Redistributions in binary form must reproduce the above copyright notice,
  *   this list of conditions and the following disclaimer in the documentation
  *   and/or other materials provided with the distribution.
- * 
+ *
  * * Neither the name of Yahoo! Inc. nor the names of its contributors may be
  *   used to endorse or promote products derived from this software without
  *   specific prior written permission of Yahoo! Inc.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -52,7 +52,7 @@
  * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
 var OpenLayers={VERSION_NUMBER:"Release 2.13.1",singleFile:!0,_getScriptLocation:function(){for(var a=/(^|(.*?\/))(OpenLayers[^\/]*?\.js)(\?|$)/,b=document.getElementsByTagName("script"),c,d="",e=0,f=b.length;e<f;e++)if(c=b[e].getAttribute("src"))if(c=c.match(a)){d=c[1];break}return function(){return d}}(),ImgPath:""};OpenLayers.Class=function(){var a=arguments.length,b=arguments[0],c=arguments[a-1],d="function"==typeof c.initialize?c.initialize:function(){b.prototype.initialize.apply(this,arguments)};1<a?(a=[d,b].concat(Array.prototype.slice.call(arguments).slice(1,a-1),c),OpenLayers.inherit.apply(null,a)):d.prototype=c;return d};
@@ -89,7 +89,7 @@ OpenLayers.Util.modifyAlphaImageDiv=function(a,b,c,d,e,f,g,h,k){OpenLayers.Util.
 (a.style.filter+=" alpha(opacity="+100*a.style.opacity+")"),b.style.filter="alpha(opacity=0)")};OpenLayers.Util.createAlphaImageDiv=function(a,b,c,d,e,f,g,h,k){var l=OpenLayers.Util.createDiv();k=OpenLayers.Util.createImage(null,null,null,null,null,null,null,k);k.className="olAlphaImg";l.appendChild(k);OpenLayers.Util.modifyAlphaImageDiv(l,a,b,c,d,e,f,g,h);return l};OpenLayers.Util.upperCaseObject=function(a){var b={},c;for(c in a)b[c.toUpperCase()]=a[c];return b};
 OpenLayers.Util.applyDefaults=function(a,b){a=a||{};var c="function"==typeof window.Event&&b instanceof window.Event,d;for(d in b)if(void 0===a[d]||!c&&b.hasOwnProperty&&b.hasOwnProperty(d)&&!a.hasOwnProperty(d))a[d]=b[d];!c&&(b&&b.hasOwnProperty&&b.hasOwnProperty("toString")&&!a.hasOwnProperty("toString"))&&(a.toString=b.toString);return a};
 OpenLayers.Util.getParameterString=function(a){var b=[],c;for(c in a){var d=a[c];if(null!=d&&"function"!=typeof d){if("object"==typeof d&&d.constructor==Array){for(var e=[],f,g=0,h=d.length;g<h;g++)f=d[g],e.push(encodeURIComponent(null===f||void 0===f?"":f));d=e.join(",")}else d=encodeURIComponent(d);b.push(encodeURIComponent(c)+"="+d)}}return b.join("&")};OpenLayers.Util.urlAppend=function(a,b){var c=a;if(b)var d=(a+" ").split(/[?&]/),c=c+(" "===d.pop()?b:d.length?"&"+b:"?"+b);return c};
-OpenLayers.Util.getImagesLocation=function(){return OpenLayers.ImgPath||OpenLayers._getScriptLocation()+"img/"};OpenLayers.Util.getImageLocation=function(a){return OpenLayers.Util.getImagesLocation()+a};OpenLayers.Util.Try=function(){for(var a=null,b=0,c=arguments.length;b<c;b++){var d=arguments[b];try{a=d();break}catch(e){}}return a};
+OpenLayers.Util.getImagesLocation=function(){return OpenLayers.ImgPath||OpenLayers._getScriptLocation()+"../img/"};OpenLayers.Util.getImageLocation=function(a){return OpenLayers.Util.getImagesLocation()+a};OpenLayers.Util.Try=function(){for(var a=null,b=0,c=arguments.length;b<c;b++){var d=arguments[b];try{a=d();break}catch(e){}}return a};
 OpenLayers.Util.getXmlNodeValue=function(a){var b=null;OpenLayers.Util.Try(function(){b=a.text;b||(b=a.textContent);b||(b=a.firstChild.nodeValue)},function(){b=a.textContent});return b};OpenLayers.Util.mouseLeft=function(a,b){for(var c=a.relatedTarget?a.relatedTarget:a.toElement;c!=b&&null!=c;)c=c.parentNode;return c!=b};OpenLayers.Util.DEFAULT_PRECISION=14;OpenLayers.Util.toFloat=function(a,b){null==b&&(b=OpenLayers.Util.DEFAULT_PRECISION);"number"!==typeof a&&(a=parseFloat(a));return 0===b?a:parseFloat(a.toPrecision(b))};
 OpenLayers.Util.rad=function(a){return a*Math.PI/180};OpenLayers.Util.deg=function(a){return 180*a/Math.PI};OpenLayers.Util.VincentyConstants={a:6378137,b:6356752.3142,f:1/298.257223563};
 OpenLayers.Util.distVincenty=function(a,b){for(var c=OpenLayers.Util.VincentyConstants,d=c.a,e=c.b,c=c.f,f=OpenLayers.Util.rad(b.lon-a.lon),g=Math.atan((1-c)*Math.tan(OpenLayers.Util.rad(a.lat))),h=Math.atan((1-c)*Math.tan(OpenLayers.Util.rad(b.lat))),k=Math.sin(g),g=Math.cos(g),l=Math.sin(h),h=Math.cos(h),m=f,n=2*Math.PI,p=20;1E-12<Math.abs(m-n)&&0<--p;){var q=Math.sin(m),r=Math.cos(m),s=Math.sqrt(h*q*h*q+(g*l-k*h*r)*(g*l-k*h*r));if(0==s)return 0;var r=k*l+g*h*r,t=Math.atan2(s,r),u=Math.asin(g*h*
@@ -1114,23 +1114,23 @@ a.DistributedSearch||this.DistributedSearch,b);var c=a.ResponseHandler||this.Res
 (a={});var b=this.createElementNSPlus("csw:Query",{attributes:{typeNames:a.typeNames||"csw:Record"}}),c=a.ElementName;if(OpenLayers.Util.isArray(c)&&0<c.length)for(var d=0,e=c.length;d<e;d++)this.writeNode("csw:ElementName",c[d],b);else this.writeNode("csw:ElementSetName",a.ElementSetName||{value:"summary"},b);a.Constraint&&this.writeNode("csw:Constraint",a.Constraint,b);a.SortBy&&this.writeNode("ogc:SortBy",a.SortBy,b);return b},ElementName:function(a){return this.createElementNSPlus("csw:ElementName",
 {value:a.value})},ElementSetName:function(a){return this.createElementNSPlus("csw:ElementSetName",{attributes:{typeNames:a.typeNames},value:a.value})},Constraint:function(a){var b=this.createElementNSPlus("csw:Constraint",{attributes:{version:a.version}});if(a.Filter){var c=new OpenLayers.Format.Filter({version:a.version});b.appendChild(c.write(a.Filter))}else a.CqlText&&(a=this.createElementNSPlus("CqlText",{value:a.CqlText.value}),b.appendChild(a));return b}},ogc:OpenLayers.Format.Filter.v1_1_0.prototype.writers.ogc},
 CLASS_NAME:"OpenLayers.Format.CSWGetRecords.v2_0_2"});/*
- Apache 2 
+ Apache 2
 
  Contains portions of Rico <http://openrico.org/>
 
- Copyright 2005 Sabre Airline Solutions  
+ Copyright 2005 Sabre Airline Solutions
 
  Licensed under the Apache License, Version 2.0 (the "License"); you
  may not use this file except in compliance with the License. You
  may obtain a copy of the License at
 
-     http://www.apache.org/licenses/LICENSE-2.0  
+     http://www.apache.org/licenses/LICENSE-2.0
 
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS,
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
  implied. See the License for the specific language governing
- permissions and limitations under the License. 
+ permissions and limitations under the License.
 */
 OpenLayers.Marker.Box=OpenLayers.Class(OpenLayers.Marker,{bounds:null,div:null,initialize:function(a,b,c){this.bounds=a;this.div=OpenLayers.Util.createDiv();this.div.style.overflow="hidden";this.events=new OpenLayers.Events(this,this.div);this.setBorder(b,c)},destroy:function(){this.div=this.bounds=null;OpenLayers.Marker.prototype.destroy.apply(this,arguments)},setBorder:function(a,b){a||(a="red");b||(b=2);this.div.style.border=b+"px solid "+a},draw:function(a,b){OpenLayers.Util.modifyDOMElement(this.div,
 null,a,b);return this.div},onScreen:function(){var a=!1;this.map&&(a=this.map.getExtent().containsBounds(this.bounds,!0,!0));return a},display:function(a){this.div.style.display=a?"":"none"},CLASS_NAME:"OpenLayers.Marker.Box"});OpenLayers.Format.Text=OpenLayers.Class(OpenLayers.Format,{defaultStyle:null,extractStyles:!0,initialize:function(a){a=a||{};!1!==a.extractStyles&&(a.defaultStyle={externalGraphic:OpenLayers.Util.getImageLocation("marker.png"),graphicWidth:21,graphicHeight:25,graphicXOffset:-10.5,graphicYOffset:-12.5});OpenLayers.Format.prototype.initialize.apply(this,[a])},read:function(a){a=a.split("\n");for(var b,c=[],d=0;d<a.length-1;d++){var e=a[d].replace(/^\s*/,"").replace(/\s*$/,"");if("#"!=e.charAt(0))if(b){for(var e=
