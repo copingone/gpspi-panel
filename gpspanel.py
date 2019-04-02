@@ -15,7 +15,7 @@
 # Boston, MA 02110-1301, USA.
 
 import gps, time, gevent, base64, cStringIO, math, socket
-from gevent import monkey; monkey.patch_all()
+import gevent
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO
 from PIL import Image, ImageDraw, ImageFont
@@ -103,7 +103,7 @@ def background_thread():
 def skymap(satellites):
 	# set image size
 	sz = 400
-	
+
 	# create empty image
 	img = Image.new('RGBA', (sz, sz), (255,255,255,0))
 	draw = ImageDraw.Draw(img)
@@ -133,18 +133,18 @@ def skymap(satellites):
 	draw.text((sz * 0.98 - 8, sz * 0.98 / 2 + 5), "W", fill = white)
 	draw.text((sz * 0.02 + 5, sz * 0.98 / 2 - 8), "E", fill = white)
 
-	
+
 	# elevation lines
 	for num in range (15, 90, 15):
 		x0 = sz * 0.5 - num * 2
 		y0 = sz * 0.5 - num * 2
 		x1 = sz * 0.5 + num * 2
 		y1 = sz * 0.5 + num * 2
-		
+
 		# draw labels
 		draw.arc([(x0, y0), (x1, y1)], 0, 360, fill = ltgray)
 		draw.text((sz/2 * 0.98 - 10, sz * 0.5 - num * 2), '{:d}'.format(90 - num), fill = ltgray)
-	
+
 	# satellites
 	for s in satellites:
 		if (s['PRN'] != 0) and (s['el'] + s['az'] + s['ss'] != 0) and (s['el'] >= 0 and s['az'] >= 0):
@@ -203,7 +203,7 @@ def skymap(satellites):
 	img.save(imgdata, format="PNG")
 	imgdata_encoded = base64.b64encode(imgdata.getvalue())
 	return imgdata_encoded
-	
+
 
 @app.route('/')
 def main():
