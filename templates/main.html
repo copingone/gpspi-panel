@@ -8,7 +8,7 @@
 		<link href="assets/css/style.css" rel="stylesheet">
 
     <link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/styleown.css" rel="stylesheet">
     <script src="assets/js/jquery-3.2.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/socket.io.min.js"></script>
@@ -62,9 +62,6 @@
 		        var lonLat = new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
 		        map.setCenter (lonLat, zoom);
 		    }
-				iconFeature = new OpenLayers.Feature({
-					geometry: center
-				});
 
 				var iconStyle = new OpenLayers.style.Style({
 					image: new OpenLayers.style.Icon({
@@ -74,6 +71,8 @@
 						src: 'assets/img/marker.png'
 					})
 				});
+
+				iconFeature = new OpenLayers.Feature();
 
 				iconFeature.setStyle(iconStyle);
 
@@ -89,7 +88,10 @@
 			}
 
 		function UpdateMapPos(lon,lat) {
-			iconFeature.setGeometry(new OpenLayers.geom.Point(OpenLayers.LonLat([lon, lat]).transform(new OpenLayers.Projection("EPSG:4326"))));
+			var lonLat = new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+			// map.setCenter (lonLat, zoom);
+			// iconFeature.setGeometry(new OpenLayers.geom.Point(OpenLayers.LonLat([lon, lat]).transform(new OpenLayers.Projection("EPSG:4326"))));
+			iconFeature.setGeometry(new OpenLayers.geom.Point(lonLat));
 			map.getView().animate({
 				center: OpenLayers.LonLat([lon, lat]).transform(new OpenLayers.Projection("EPSG:4326")),
 				duration: 1000
@@ -148,8 +150,11 @@
 </head>
 <body onload="LoadMap()">
 	<div class="topnav">
-      <a href="help.html">Karte</a>
-      <a class="active" href="main.html">Main</a>
+      <!-- <a href="help.html">Karte</a>
+      <a class="active" href="main.html">Main</a> -->
+			<button type="button" class="btn btn-outline-primary" id="togglemap" onclick="togglemap();">Map</button>
+			<button type="button" class="btn btn-outline-primary" id="toggleskymap" onclick="toggleskymap();">Sky Map</button>
+			<button type="button" class="btn btn-outline-primary" id="togglegpsdetails" onclick="togglegpsdetails();">GPS Info</button>
   </div>
 	<div class="container">
 		<h1>GPS Information</h1>
@@ -158,11 +163,11 @@
 			<span class="coordlabel"><b>Longitude: </b></span><span id="lon" class="coord"></span><br />
 			<span class="timelabel"><b>UTC time: </b></span><span id="gtime" class="time"></span>
 		</div>
-		<div id="displayctl">
+		<!-- <div id="displayctl">
 			<button type="button" class="btn btn-outline-primary" id="togglemap" onclick="togglemap();">Map</button>
 			<button type="button" class="btn btn-outline-primary" id="toggleskymap" onclick="toggleskymap();">Sky Map</button>
 			<button type="button" class="btn btn-outline-primary" id="togglegpsdetails" onclick="togglegpsdetails();">GPS Info</button>
-		</div>
+		</div> -->
 		<div id="mapcontainer">
 			<div id="map" class="map">
 				Loading...

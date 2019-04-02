@@ -10,8 +10,8 @@ body {
 }
 
 .map {
-  height: 1200px;
-  width: 100%;
+  height: 464px;
+  width: 1000px;
 }
 
 .topnav {
@@ -57,7 +57,7 @@ a:hover {
 }
 
 .container {
-	width: 1200px;
+  width: 1000px;
 	text-align: left;
 }
 
@@ -106,7 +106,7 @@ a:hover {
 }
 
 #mapcontainer, #skymapcontainer, #gpsdetailscontainer {
-	width: 1200px;
+	width: 1000px;
 }
 
 #mapcontainer {
@@ -122,8 +122,8 @@ a:hover {
 }
 
 #map {
-	width: 1200px;
-	height: 1000px;
+  height: 464px;
+  width: 1000px;
 }
 
 #skymap {
