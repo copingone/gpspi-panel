@@ -29,8 +29,9 @@ $sudo -H pip install -r requirements.txt
 
 Copy the **gpspanel** folder to /opt directory
 
-# Offline Functionality
-To use offline download OSM Maps with GMapCatcher, export them in OSM format and store them in assets/tiles
+# Offline Maps
+
+To use offline, download OSM Maps with [GMapCatcher](https://github.com/heldersepu/GMapCatcher), export them in OSM format and store them in assets/tiles
 
 
 # Usage
