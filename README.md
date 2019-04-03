@@ -1,3 +1,7 @@
+Forked from rkaczorek/gpspanel
+
+Added offline-Maps and new Style
+
 # GPS Panel
 
 GPS Panel is a simple web application to present information from your GPS. It depends on gpsd daemon, which reads raw data from your GPS device.
