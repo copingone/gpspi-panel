@@ -145,52 +145,52 @@
     </script>
 </head>
 <body onload="LoadMap()">
+	<div class="topnav">
+			<button type="button" class="btn btn-outline-primary" id="togglemap" onclick="togglemap();">Karte</button>
+			<button type="button" class="btn btn-outline-primary" id="toggleskymap" onclick="toggleskymap();">Satelliten Karte</button>
+			<button type="button" class="btn btn-outline-primary" id="togglegpsdetails" onclick="togglegpsdetails();">GPS Info</button>
+  </div>
 	<div class="container">
 		<h1>GPS Information</h1>
 		<div id="coordtime">
 			<span class="coordlabel"><b>Latitude: </b></span><span id="latitude" class="coord"></span>
 			<span class="coordlabel"><b>Longitude: </b></span><span id="longitude" class="coord"></span><br />
-			<span class="timelabel"><b>UTC time: </b></span><span id="gtime" class="time"></span>
-		</div>
-		<div id="displayctl">
-			<button id="togglemap" onclick="togglemap();">Map</button>
-			<button id="toggleskymap" onclick="toggleskymap();">Sky Map</button>
-			<button id="togglegpsdetails" onclick="togglegpsdetails();">GPS Info</button>
+			<span class="timelabel"><b>UTC Zeit: </b></span><span id="gtime" class="time"></span>
 		</div>
 		<div id="mapcontainer">
 			<div id="map" class="map">
 				Loading...
 				<noscript>
-					<span class='warning'>You must enable javascript to view the maps.</span><br/>
+					<span class='warning'>javascript benötigt</span><br/>
 				</noscript>
 			</div>
 		</div>
 		<div id="skymapcontainer">
 			<img id="skymap" src="assets/img/skymap.png"/>
-			<p id="legend" >A filled circle means the satellite was used in the last fix. Colors indicate signal strength in dB.</p>
+			<p id="legend" >Ein gefüllter Kreis bedeutet, der Satellit wurde im letzten Update benutzt. Farben deuten auf die Signalstärke hin.</p>
 		</div>
 		<div id="gpsdetailscontainer">
 			<div id="gpsdetails">
 				<div id="gpsinfo">
 					<table>
 						<tr><th colspan=2 align=left><h2>GPS Status</h2></th></tr>
-						<tr><td><b>Time</b></td><td><span id="gpstime"></span></td></tr>
-						<tr><td><b>Latitude</b></td><td><span id="latitude"></span></td></tr>
-						<tr><td><b>Longitude</b></td><td><span id="longitude"></span></td></tr>
-						<tr><td><b>Altitude</b></td><td><span id="altitude"></span></td></tr>
+						<tr><td><b>Zeit</b></td><td><span id="gpstime"></span></td></tr>
+						<tr><td><b>Latitude</b></td><td><span id="lat"></span></td></tr>
+						<tr><td><b>Longitude</b></td><td><span id="lon"></span></td></tr>
+						<tr><td><b>Höhe(Altitude)</b></td><td><span id="altitude"></span></td></tr>
 						<tr><td><b>Fix Type</b></td><td><span id="mode"></span></td></tr>
-						<tr><td><b>Satellites</b></td><td><span id="sats"></span></td></tr>
+						<tr><td><b>Satelliten</b></td><td><span id="sats"></span></td></tr>
 						<tr><td><b>HDOP</b></td><td><span id="hdop"></span></td></tr>
 						<tr><td><b>VDOP</b></td><td><span id="vdop"></span></td></tr>
 					</table>
 				</div>
 				<div id="gpssats">
 					<table>
-						<tr><th colspan=5 align=left><h2>Visible Satellites<h2></th></tr><tr><th>PRN</th><th>Elevation</th><th>Azimuth</th><th>SS</th><th>Used</th></tr>
+						<tr><th colspan=5 align=left><h2>Sichtbare Satelliten<h2></th></tr><tr><th>PRN</th><th>Elevation</th><th>Azimuth</th><th>SS</th><th>Used</th></tr>
 					</table>
 				</div>
 				<div id="gpsfix">
-						<p>Waiting for GPS fix...</p>
+						<p>Warten auf Update...</p>
 				</div>
 			</div>
 		</div>
