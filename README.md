@@ -1,6 +1,11 @@
-Forked from rkaczorek/gpspanel
+Forked from rkaczorek/gpspanel !
 
-Added offline-Maps and new Style
+# Changes from Original 
+- Added offline-Maps
+- New Menu
+- New Css-Style
+- Raspberry-Pi support
+
 
 # GPS Panel
 
@@ -23,6 +28,10 @@ $sudo -H pip install -r requirements.txt
 ```
 
 Copy the **gpspanel** folder to /opt directory
+
+# Offline Functionality
+To use offline download OSM Maps with GMapCatcher, export them in OSM format and store them in assets/tiles
+
 
 # Usage
 
