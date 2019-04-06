@@ -47,7 +47,7 @@ cur = con.cursor()
 
 def createtable():
 	with con:
-    	try:
+		try:
 			cur.execute("CREATE TABLE pos(lat TEXT, long TEXT, alt TEXT, time TEXT)")
 			con.commit()
 		except:

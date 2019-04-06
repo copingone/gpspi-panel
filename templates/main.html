@@ -96,11 +96,11 @@
 		-->
 	</script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            var url = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port: '');
-            var socket = io.connect(url);
-            socket.on('gpsdata', function(gps) {
-                $("#gpstime").html(gps.gpstime);
+				$(document).ready(function() {
+					var url = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port: '');
+					var socket = io.connect(url);
+					socket.on('gpsdata', function(gps) {
+				$("#gpstime").html(gps.gpstime);
 				$("#latitude").html(gps.latitude);
 				$("#longitude").html(gps.longitude);
 				$("#altitude").html(gps.altitude);
@@ -140,8 +140,8 @@
 				} else {
 					document.getElementById("gpsfix").style.display="block";
 				}
-            });
-        });
+				});
+			});
     </script>
 </head>
 <body onload="LoadMap()">
