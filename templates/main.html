@@ -149,6 +149,7 @@
 			<button type="button" class="btn btn-outline-primary" id="togglemap" onclick="togglemap();">Karte</button>
 			<button type="button" class="btn btn-outline-primary" id="toggleskymap" onclick="toggleskymap();">Satelliten Karte</button>
 			<button type="button" class="btn btn-outline-primary" id="togglegpsdetails" onclick="togglegpsdetails();">GPS Info</button>
+			<button type="button" class="btn btn-outline-primary" id="toggleinput" onclick="toggleinput();">Koordinaten eingeben</button>
   </div>
 	<div class="container">
 		<h1>GPS Information</h1>
@@ -189,6 +190,12 @@
 						<tr><th colspan=5 align=left><h2>Sichtbare Satelliten<h2></th></tr><tr><th>PRN</th><th>Elevation</th><th>Azimuth</th><th>SS</th><th>Used</th></tr>
 					</table>
 				</div>
+				<div id="inputcontainer">
+					<p></p>
+					<input type="text" id="htmlcoordlat" value="">
+					<input type="text" id="htmlcoordlong" value="">
+					<input type="button" id="sumbit" class="btn btn-outline-primary" value="Suche" onmousedown="search()">
+				</div>
 				<div id="gpsfix">
 						<p>Warten auf Update...</p>
 				</div>
@@ -210,6 +217,17 @@
 			document.getElementById("mapcontainer").style.display="none";
 			document.getElementById("skymapcontainer").style.display="none";
 			document.getElementById("gpsdetailscontainer").style.display="block";
+	}
+	function toggleinput() {
+			document.getElementById("mapcontainer").style.display="block";
+			document.getElementById("skymapcontainer").style.display="none";
+			document.getElementById("gpsdetailscontainer").style.display="none";
+			document.getElementById("inputcontainer").style.display="block";
+	}
+	function search() {
+		var lat = document.getElementById("htmlcoordlat").value
+		var lon = document.getElementById("htmlcoordlong").value
+		alert(lat)
 	}
 	</script>
 </body>
