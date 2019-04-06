@@ -16,7 +16,6 @@
 
 import gps, time, gevent, base64, cStringIO, math, socket
 import gevent
-import sqlite3 as lite
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO
 from PIL import Image, ImageDraw, ImageFont
@@ -42,36 +41,9 @@ magenta = (255, 0, 255)
 yellow = (255, 255, 0)
 orange = (255, 128, 0)
 
-con = lite.connect('db/pos.db')
-cur = con.cursor()
-
-def createtable():
-	with con:
-		try:
-			cur.execute("CREATE TABLE pos(lat TEXT, long TEXT, alt TEXT, time TEXT)")
-			con.commit()
-		except:
-			print("Table exists!")
-
-createtable()
-
-#def lastrow():
-#    return cur.lastrowid
-
-def insertAcommit(lat, long, alt, time):
-	try:
-		cur.execute("INSERT INTO pos VALUES('{lat}','{long}','{alt}','{time}')".format(lat=lat, long=long, alt=alt, time=time))
-		con.commit()
-		print("INSERT INTO pos VALUES('{lat}','{long}','{alt}','{time}')").format(lat=lat, long=long, alt=alt, time=time)
-
-	except lite.Error as e:
-		if con:
-			con.rollback()
-			print("Error {}:".format(e.args[0]))
-
 def gpsd_connect():
-    global session
-    while session is None:
+	global session
+	while session is None:
 		try:
 			session = gps.gps("localhost", "2947")
 			session.stream(gps.WATCH_ENABLE | gps.WATCH_NEWSTYLE)
@@ -81,22 +53,20 @@ def gpsd_connect():
 		except KeyboardInterrupt:
 			quit()
 
-    print "GPSD server connected successfully"
+	print "GPSD server connected successfully"
 
 def background_thread():
-    global session
-    while True:
-    	if session is None:
+	global session
+	while True:
+		if session is None:
 			gpsd_connect()
 
 		try:
 			report = session.next()
 
-			insertAcommit(report.lat, report.lon, report.alt, report.time)
-
 			if report['class'] == 'TPV':
 				socketio.emit('gpsdata', {
-    			'mode': report.mode,
+				'mode': report.mode,
 				'latitude': report.lat,
 				'longitude': report.lon,
 				'gpstime': report.time,
@@ -229,7 +199,7 @@ def skymap(satellites):
 			draw.text((sz - 19, sz - 25), "-10", fill = white)
 
 	# encode and return
-    imgdata = cStringIO.StringIO()
+	imgdata = cStringIO.StringIO()
 	img.save(imgdata, format="PNG")
 	imgdata_encoded = base64.b64encode(imgdata.getvalue())
 	return imgdata_encoded
