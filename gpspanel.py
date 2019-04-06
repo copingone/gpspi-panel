@@ -16,6 +16,7 @@
 
 import gps, time, gevent, base64, cStringIO, math, socket
 import gevent
+import sqlite3 as lite
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO
 from PIL import Image, ImageDraw, ImageFont
@@ -41,6 +42,31 @@ magenta = (255, 0, 255)
 yellow = (255, 255, 0)
 orange = (255, 128, 0)
 
+con = lite.connect('db/pos.db')
+cur = con.cursor()
+
+
+def createtable():
+    with con:
+        try:
+            cur.execute("CREATE TABLE pos(lat TEXT, long TEXT, alt TEXT, time TEXT)")
+        except:
+			print("Table exists!")
+
+def lastrow():
+    return cur.lastrowid
+
+def insertAcommit(lat, long, alt, time):
+    try:
+        cur.execute("INSERT INTO pos VALUES('{lat}','{long}','{alt}','{time}')".format(lat=lat, long=long, alt=alt, time=time))
+        con.commit()
+        print("INSERT INTO pos VALUES('{lat}','{long}','{alt}','{time}')").format(lat=lat, long=long, alt=alt, time=time)
+
+    except lite.Error as e:
+        if con:
+            con.rollback()
+            print("Error {}:".format(e.args[0]))
+
 def gpsd_connect():
 	global session
 	while session is None:
@@ -63,6 +89,8 @@ def background_thread():
 
 		try:
 			report = session.next()
+
+			insertAcommit(report.lat, report.lon, report.alt, report.time)
 
 			if report['class'] == 'TPV':
 				socketio.emit('gpsdata', {
@@ -103,7 +131,7 @@ def background_thread():
 def skymap(satellites):
 	# set image size
 	sz = 400
-	
+
 	# create empty image
 	img = Image.new('RGBA', (sz, sz), (255,255,255,0))
 	draw = ImageDraw.Draw(img)
@@ -133,18 +161,18 @@ def skymap(satellites):
 	draw.text((sz * 0.98 - 8, sz * 0.98 / 2 + 5), "W", fill = white)
 	draw.text((sz * 0.02 + 5, sz * 0.98 / 2 - 8), "E", fill = white)
 
-	
+
 	# elevation lines
 	for num in range (15, 90, 15):
 		x0 = sz * 0.5 - num * 2
 		y0 = sz * 0.5 - num * 2
 		x1 = sz * 0.5 + num * 2
 		y1 = sz * 0.5 + num * 2
-		
+
 		# draw labels
 		draw.arc([(x0, y0), (x1, y1)], 0, 360, fill = ltgray)
 		draw.text((sz/2 * 0.98 - 10, sz * 0.5 - num * 2), '{:d}'.format(90 - num), fill = ltgray)
-	
+
 	# satellites
 	for s in satellites:
 		if (s['PRN'] != 0) and (s['el'] + s['az'] + s['ss'] != 0) and (s['el'] >= 0 and s['az'] >= 0):
@@ -203,7 +231,7 @@ def skymap(satellites):
 	img.save(imgdata, format="PNG")
 	imgdata_encoded = base64.b64encode(imgdata.getvalue())
 	return imgdata_encoded
-	
+
 
 @app.route('/')
 def main():
