@@ -46,12 +46,12 @@ con = lite.connect('db/pos.db')
 cur = con.cursor()
 
 def createtable():
-    with con:
-        try:
-            cur.execute("CREATE TABLE pos(lat TEXT, long TEXT, alt TEXT, time TEXT)")
+	with con:
+    	try:
+			cur.execute("CREATE TABLE pos(lat TEXT, long TEXT, alt TEXT, time TEXT)")
 			con.commit()
-        except:
-            print("Table exists!")
+		except:
+			print("Table exists!")
 
 createtable()
 
@@ -59,76 +59,76 @@ createtable()
 #    return cur.lastrowid
 
 def insertAcommit(lat, long, alt, time):
-    try:
-        cur.execute("INSERT INTO pos VALUES('{lat}','{long}','{alt}','{time}')".format(lat=lat, long=long, alt=alt, time=time))
-        con.commit()
-        print("INSERT INTO pos VALUES('{lat}','{long}','{alt}','{time}')").format(lat=lat, long=long, alt=alt, time=time)
+	try:
+		cur.execute("INSERT INTO pos VALUES('{lat}','{long}','{alt}','{time}')".format(lat=lat, long=long, alt=alt, time=time))
+		con.commit()
+		print("INSERT INTO pos VALUES('{lat}','{long}','{alt}','{time}')").format(lat=lat, long=long, alt=alt, time=time)
 
-    except lite.Error as e:
-        if con:
-            con.rollback()
-            print("Error {}:".format(e.args[0]))
+	except lite.Error as e:
+		if con:
+			con.rollback()
+			print("Error {}:".format(e.args[0]))
 
 def gpsd_connect():
     global session
     while session is None:
-        try:
-            session = gps.gps("localhost", "2947")
-            session.stream(gps.WATCH_ENABLE | gps.WATCH_NEWSTYLE)
-        except socket.error:
-            print "GPSD server is not available. Retrying in 5 seconds..."
-            time.sleep(5)
-        except KeyboardInterrupt:
-            quit()
+		try:
+			session = gps.gps("localhost", "2947")
+			session.stream(gps.WATCH_ENABLE | gps.WATCH_NEWSTYLE)
+		except socket.error:
+			print "GPSD server is not available. Retrying in 5 seconds..."
+			time.sleep(5)
+		except KeyboardInterrupt:
+			quit()
 
     print "GPSD server connected successfully"
 
 def background_thread():
     global session
     while True:
-        if session is None:
-            gpsd_connect()
+    	if session is None:
+			gpsd_connect()
 
-        try:
-            report = session.next()
+		try:
+			report = session.next()
 
-            insertAcommit(report.lat, report.lon, report.alt, report.time)
+			insertAcommit(report.lat, report.lon, report.alt, report.time)
 
-            if report['class'] == 'TPV':
-                socketio.emit('gpsdata', {
-                'mode': report.mode,
-                'latitude': report.lat,
-                'longitude': report.lon,
-                'gpstime': report.time,
-                'altitude': report.alt
-                })
-            if report['class'] == 'SKY':
-                socketio.emit('gpsdata', {
-                'sats': len(report.satellites),
-                'hdop': report.hdop,
-                'vdop': report.vdop
-                })
-                satellites = "<table><tr><th colspan=5 align=left><h2>Visible Satellites<h2></th></tr><tr><th>PRN</th><th>Elevation</th><th>Azimuth</th><th>SS</th><th>Used</th></tr>"
-                for s in report.satellites:
-                    satellites = satellites + "<tr><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%s</td></tr>" % (s['PRN'], s['el'], s['az'], s['ss'], s['used'])
-                satellites = satellites + "</table>"
-                socketio.emit('gpsdata', {
-                'satellites': satellites,
-                'skymap': skymap(report.satellites)
-                })
-        except KeyError:
-            pass
-        except AttributeError:
-            pass
-        except StopIteration:
-            print "GPSD server disconnected"
-            session = None
-        except KeyboardInterrupt:
-            quit()
+			if report['class'] == 'TPV':
+				socketio.emit('gpsdata', {
+    			'mode': report.mode,
+				'latitude': report.lat,
+				'longitude': report.lon,
+				'gpstime': report.time,
+				'altitude': report.alt
+				})
+			if report['class'] == 'SKY':
+				socketio.emit('gpsdata', {
+				'sats': len(report.satellites),
+				'hdop': report.hdop,
+				'vdop': report.vdop
+				})
+				satellites = "<table><tr><th colspan=5 align=left><h2>Visible Satellites<h2></th></tr><tr><th>PRN</th><th>Elevation</th><th>Azimuth</th><th>SS</th><th>Used</th></tr>"
+				for s in report.satellites:
+					satellites = satellites + "<tr><td>%d</td><td>%d</td><td>%d</td><td>%d</td><td>%s</td></tr>" % (s['PRN'], s['el'], s['az'], s['ss'], s['used'])
+				satellites = satellites + "</table>"
+				socketio.emit('gpsdata', {
+				'satellites': satellites,
+				'skymap': skymap(report.satellites)
+				})
+		except KeyError:
+			pass
+		except AttributeError:
+			pass
+		except StopIteration:
+			print "GPSD server disconnected"
+			session = None
+		except KeyboardInterrupt:
+			quit()
 #		except:
 #			pass
 
-        socketio.sleep(1)
+		socketio.sleep(1)
 
 def skymap(satellites):
 	# set image size
@@ -226,7 +226,7 @@ def skymap(satellites):
 			draw.text((sz - 19, sz - 85), "35+", fill = black)
 			draw.text((sz - 19, sz - 65), "30+", fill = black)
 			draw.text((sz - 19, sz - 45), "30+", fill = black)
-            draw.text((sz - 19, sz - 25), "-10", fill = white)
+			draw.text((sz - 19, sz - 25), "-10", fill = white)
 
 	# encode and return
     imgdata = cStringIO.StringIO()
