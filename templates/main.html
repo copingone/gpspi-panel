@@ -40,7 +40,7 @@
 			var lat = 51.509865;
 
 			var offlinel = new ol.layer.Tile({
-				source: new ol.source.OSM({
+				source: new ol.source.XYZ({
 					url: 'http://localhost:8625/assets/tiles/{z}/{x}/{y}.png'
         			})
 			})
@@ -85,7 +85,9 @@
 
 			map.addLayer(vectorLayer);
 
-			iconFeaturemark = new ol.Feature({});
+			iconFeaturemark = new ol.Feature({
+				geometry: center
+			});
 
 			var iconStylemark = new ol.style.Style({
 				image: new ol.style.Icon({
@@ -192,8 +194,8 @@
 			<span class="coordlabel"><b>Latitude: </b></span><span id="latitude" class="coord"></span>
 			<span class="coordlabel"><b>Longitude: </b></span><span id="longitude" class="coord"></span><br />
 			<span class="timelabel"><b>UTC Zeit: </b></span><span id="gtime" class="time"></span>
-			<span class="coord"><b>Latitude: </b></span><span id="latitudes"></span>
-			<span class="coord"><b>Longitude: </b></span><span id="longitudes"></span><br />
+			<span class="coord"><b>Latitude: </b></span><span id="latitudes" class="coord"></span>
+			<span class="coord"><b>Longitude: </b></span><span id="longitudes" class="coord"></span><br />
 		</div>
 		<div id="mapcontainer">
 			<div id="map" class="map">
