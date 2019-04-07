@@ -75,19 +75,7 @@
 
 			iconFeature.setStyle(iconStyle);
 
-			var vectorSource = new ol.source.Vector({
-				features: [iconFeature]
-			});
 
-			var vectorLayer = new ol.layer.Vector({
-				source: vectorSource
-			});
-
-			map.addLayer(vectorLayer);
-
-			iconFeaturemark = new ol.Feature({
-				geometry: center
-			});
 
 			var iconStylemark = new ol.style.Style({
 				image: new ol.style.Icon({
@@ -100,15 +88,32 @@
 
 			iconFeaturemark.setStyle(iconStylemark);
 
-			var vectorSourcemark = new ol.source.Vector({
-				features: [iconFeaturemark]
+			var vectorSource = new ol.source.Vector({
+				features: [
+				iconFeature,
+				iconFeaturemark
+				]
 			});
 
-			var vectorLayermark = new ol.layer.Vector({
-				source: vectorSourcemark
+			var vectorLayer = new ol.layer.Vector({
+				source: vectorSource
 			});
 
-			map.addLayer(vectorLayermark);
+			map.addLayer(vectorLayer);
+
+			iconFeaturemark = new ol.Feature({
+				geometry: center
+			});
+
+			// var vectorSourcemark = new ol.source.Vector({
+			// 	features: [iconFeaturemark]
+			// });
+			//
+			// var vectorLayermark = new ol.layer.Vector({
+			// 	source: vectorSourcemark
+			// });
+			//
+			// map.addLayer(vectorLayermark);
 
 		}
 
