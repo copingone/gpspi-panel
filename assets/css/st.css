@@ -122,6 +122,10 @@ a:hover {
 	width: 480px;
 }
 
+#inputcontainer {
+	width: 200px;
+}
+
 #mapcontainer, #skymapcontainer, #gpsdetailscontainer {
 	width: 1000px;
 }
@@ -135,6 +139,9 @@ a:hover {
 }
 
 #gpsdetailscontainer {
+	display:none;
+}
+#inputcontainer {
 	display:none;
 }
 
