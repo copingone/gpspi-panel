@@ -125,7 +125,7 @@
 			var loni = document.getElementById("htmlcoordlong").value;
 			document.getElementById("latitudes").innerHTML=lati;
 			document.getElementById("longitudes").innerHTML=loni;
-			iconFeaturemark.setGeometry(new ol.geom.Point(ol.proj.transform([loni, lati], 'EPSG:4326', 'EPSG:3857')));
+			iconFeaturemark.setGeometry(new ol.geom.Point(ol.proj.transform([parseFloat(loni), parseFloat(lati)], 'EPSG:4326', 'EPSG:3857')));
 		}
 
 		-->
