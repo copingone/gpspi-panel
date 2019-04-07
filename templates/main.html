@@ -64,7 +64,6 @@
       var location2 = ol.proj.fromLonLat([8, 48.5]);
 
       var linie2style = [
-				// linestring
 				new ol.style.Style({
 				  stroke: new ol.style.Stroke({
 					color: '#d12710',
@@ -75,7 +74,7 @@
 
 			var line = new ol.Feature({
 				geometry: new ol.geom.LineString([lonlat, location2]),
-				name: 'Line',
+				name: 'Line'
 			});
 
 			var linie2 = new ol.layer.Vector({
@@ -136,8 +135,6 @@
 			});
 
 			map.addLayer(vectorLayermark);
-
-
 		}
 
 		function UpdateMapPos(lon,lat) {
