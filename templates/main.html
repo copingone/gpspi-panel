@@ -72,14 +72,16 @@
 				})
 			  ];
 
-			var line = new ol.Feature({
-				geometry: new ol.geom.LineString([lonlat, location2]),
+			var line = new ol.geom.LineString([lonlat, location2]);
+			
+			var linefea = new ol.Feature({
+				geometry: [line],
 				name: 'Line'
 			});
 
 			var linie2 = new ol.layer.Vector({
 					source: new ol.source.Vector({
-					features: [line]
+					features: [linefea]
 				})
 			});
 
