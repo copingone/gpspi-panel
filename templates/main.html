@@ -75,24 +75,8 @@
 
 			iconFeature.setStyle(iconStyle);
 
-
-
-			var iconStylemark = new ol.style.Style({
-				image: new ol.style.Icon({
-					anchor: [0.5, 1.0],
-					anchorXUnits: 'fraction',
-					anchorYUnits: 'fraction',
-					src: 'assets/img/marker.png'
-				})
-			});
-
-			iconFeaturemark.setStyle(iconStylemark);
-
 			var vectorSource = new ol.source.Vector({
-				features: [
-				iconFeature,
-				iconFeaturemark
-				]
+				features: [iconFeature]
 			});
 
 			var vectorLayer = new ol.layer.Vector({
@@ -105,19 +89,31 @@
 				geometry: center
 			});
 
-			// var vectorSourcemark = new ol.source.Vector({
-			// 	features: [iconFeaturemark]
-			// });
-			//
-			// var vectorLayermark = new ol.layer.Vector({
-			// 	source: vectorSourcemark
-			// });
-			//
-			// map.addLayer(vectorLayermark);
+			var iconStylemark = new ol.style.Style({
+				image: new ol.style.Icon({
+					anchor: [0.5, 1.0],
+					anchorXUnits: 'fraction',
+					anchorYUnits: 'fraction',
+					src: 'assets/img/marker.png'
+				})
+			});
+
+			iconFeaturemark.setStyle(iconStylemark);
+
+			var vectorSourcemark = new ol.source.Vector({
+				features: [iconFeaturemark]
+			});
+
+			var vectorLayermark = new ol.layer.Vector({
+				source: vectorSourcemark
+			});
+
+			map.addLayer(vectorLayermark);
 
 		}
 
 		function UpdateMapPos(lon,lat) {
+			alert(lon);
 			iconFeature.setGeometry(new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857')));
 			map.getView().animate({
 				center: ol.proj.fromLonLat([lon, lat]),
@@ -130,8 +126,6 @@
 			var loni = document.getElementById("htmlcoordlong").value;
 			document.getElementById("latitudes").innerHTML=lati;
 			document.getElementById("longitudes").innerHTML=loni;
-
-			alert(lati);
 			iconFeaturemark.setGeometry(new ol.geom.Point(ol.proj.transform([loni, lati], 'EPSG:4326', 'EPSG:3857')));
 		}
 
