@@ -110,22 +110,27 @@
 
 			map.addLayer(vectorLayermark);
 
-			var featureLine = new ol.Feature({
-    		geometry: new ol.geom.LineString([[ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857')], [ol.proj.transform([lon+1, lat], 'EPSG:4326', 'EPSG:3857')]])
+			var vector = new ol.layer.Vector({
+			    source: new ol.source.Vector({}),
+			    style: new ol.style.Style({
+			        image: new ol.style.Circle({
+			            fill: new ol.style.Fill({
+			                color: [0, 0, 255, 1]
+			            }),
+			            radius: 4
+			        }),
+			        stroke: new ol.style.Stroke({
+			            color: [0, 0, 0, 1],
+			            width: 2
+			        })
+			    })
 			});
 
-			var vectorLine = new ol.source.Vector({});
-			vectorLine.addFeature(featureLine);
-
-			var vectorLineLayer = new ol.layer.Vector({
-    		source: vectorLine,
-    		style: new ol.style.Style({
-        	fill: new ol.style.Fill({ color: '#00FF00', weight: 4 }),
-        	stroke: new ol.style.Stroke({ color: '#00FF00', width: 2 })
-    		})
-		});
-
-		map.addLayer(vectorLineLayer);
+			var coord = [[new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'))], [new ol.geom.Point(ol.proj.transform([parseFloat(loni), parseFloat(lati)], 'EPSG:4326', 'EPSG:3857'))]];
+			var line = new ol.geom.LineString(coord);
+			var feature = new ol.Feature(line);
+			vector.getSource().addFeature(feature);
+			map.addLayer(vector);
 
 		}
 
@@ -133,8 +138,8 @@
 			var lati = document.getElementById("htmlcoordlat").value;
 			var loni = document.getElementById("htmlcoordlong").value;
 			iconFeature.setGeometry(new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857')));
-			featureLine.setGeometry(new ol.geom.LineString([new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'))], [new ol.geom.Point(ol.proj.transform([parseFloat(loni), parseFloat(lati)], 'EPSG:4326', 'EPSG:3857'))]));
-
+			// featureLine.setGeometry(new ol.geom.LineString([new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'))], [new ol.geom.Point(ol.proj.transform([parseFloat(loni), parseFloat(lati)], 'EPSG:4326', 'EPSG:3857'))]));
+			// line.setCoordinates(coord);
 			map.getView().animate({
 				center: ol.proj.fromLonLat([lon, lat]),
 				duration: 1000
