@@ -27,8 +27,8 @@ body {
 }
 
 .map {
-  height: 490px;
-  width: 1010px;
+  height: 482px;
+  width: 1005px;
 }
 
 .topnav {
@@ -170,8 +170,8 @@ a:hover {
 }
 
 #map {
-  height: 490px;
-  width: 1010px;
+  height: 482px;
+  width: 1005px;
 }
 
 #skymap {
