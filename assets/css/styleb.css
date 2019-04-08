@@ -81,23 +81,53 @@ a:hover {
 }
 
 .info {
-  font-size: 1.3em;
+  font-size: 1.8em;
   font-weight: bold;
 }
 
 #lat1{
   position: fixed;
-  left: 100px;
+  left: 140px;
 }
 
 #lon1{
   position: fixed;
-  left: 340px;
+  left: 500px;
 }
 
 #dii{
   position: fixed;
-  left: 340px;
+  left: 500px;
+}
+
+#distan{
+  position: fixed;
+  left: 670px;
+}
+
+#latitude{
+  position: fixed;
+  left: 280px;
+}
+
+#latitudes{
+  position: fixed;
+  left: 280px;
+}
+
+#longitude{
+  position: fixed;
+  left: 670px;
+}
+
+#longitudes{
+  position: fixed;
+  left: 670px;
+}
+
+#compa{
+  position: fixed;
+  left: 670px;
 }
 
 #displayctl {
