@@ -362,11 +362,10 @@
 			<button type="button" class="btn btn-outline-primary" id="toggleskymap" onclick="toggleskymap();">Satelliten Karte</button>
 			<button type="button" class="btn btn-outline-primary" id="togglegpsdetails" onclick="togglegpsdetails();">GPS Info</button>
 			<button type="button" class="btn btn-outline-primary" id="toggleinput" onclick="toggleinput();">Koordinaten eingeben</button>
-			<!-- <button type="button" class="btn btn-outline-primary" id="toggleinput" onclick="toggleentfwink();">Winkel berechnen</button> -->
 			<button type="button" class="btn btn-outline-primary" id="toggleentfwink">
 			<input type="checkbox" class="custom-control-input" id="defaultChecked2ang"> Winkel berechnen</button>
 			<button type="button" class="btn btn-outline-primary" id="togglecentering">
-			<input type="checkbox" class="custom-control-input" id="defaultChecked2" checked> Karte zentrieren</button>
+			<input type="checkbox" class="custom-control-input" id="defaultChecked2"> Karte zentrieren</button>
   </div>
 	<div class="container">
 		<div class="info">
@@ -436,28 +435,24 @@
 			document.getElementById("skymapcontainer").style.display="none";
 			document.getElementById("gpsdetailscontainer").style.display="none";
 			document.getElementById("inputcontainer").style.display="none";
-			document.getElementById("entfwink").style.display="none";
 	}
 	function toggleskymap() {
 			document.getElementById("mapcontainer").style.display="none";
 			document.getElementById("skymapcontainer").style.display="block";
 			document.getElementById("gpsdetailscontainer").style.display="none";
 			document.getElementById("inputcontainer").style.display="none";
-			document.getElementById("entfwink").style.display="none";
 	}
 	function togglegpsdetails() {
 			document.getElementById("mapcontainer").style.display="none";
 			document.getElementById("skymapcontainer").style.display="none";
 			document.getElementById("gpsdetailscontainer").style.display="block";
 			document.getElementById("inputcontainer").style.display="none";
-			document.getElementById("entfwink").style.display="none";
 	}
 	function toggleinput() {
 			document.getElementById("mapcontainer").style.display="block";
 			document.getElementById("skymapcontainer").style.display="none";
 			document.getElementById("gpsdetailscontainer").style.display="none";
 			document.getElementById("inputcontainer").style.display="block";
-			document.getElementById("entfwink").style.display="none";
 	}
 
 	</script>

@@ -27,8 +27,8 @@ body {
 }
 
 .map {
-  height: 464px;
-  width: 1000px;
+  height: 500px;
+  width: 1020px;
 }
 
 .topnav {
@@ -128,6 +128,16 @@ a:hover {
 #compa{
   position: fixed;
   left: 670px;
+}
+
+#gtime{
+  position: fixed;
+  left: 187px;
+}
+
+#angle{
+  position: fixed;
+  left: 240px;
 }
 
 #displayctl {
