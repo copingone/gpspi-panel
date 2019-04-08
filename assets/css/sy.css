@@ -112,10 +112,10 @@ a:hover {
 }
 
 .time {
-	width: 150px;
+	width: 240px;
 	font-weight: bold;
 	color: #C4F7A1;
-	font-size: 1.0em;
+	font-size: 0.91em;
 }
 
 #displayctl {
