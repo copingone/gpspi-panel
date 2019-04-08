@@ -79,7 +79,7 @@ a:hover {
 }
 
 #coordtime {
-	width: 480px;
+	width: 1000px;
 	font-weight: bold;
 	font-size:0.85em;
 	color: grey;
@@ -98,7 +98,7 @@ a:hover {
 }
 
 .coord {
-    width: 150px;
+  width: 300px;
 	font-weight: bold;
 	color: #C4F7A1;
 	font-size: 1.0em;
@@ -119,11 +119,11 @@ a:hover {
 }
 
 #displayctl {
-	width: 480px;
+	width: 1000px;
 }
 
 #inputcontainer {
-	width: 200px;
+	width: 1000px;
 }
 
 #mapcontainer, #skymapcontainer, #gpsdetailscontainer {
@@ -165,7 +165,7 @@ a:hover {
 
 #gpsdetails {
 	display: block;
-	width: 460px;
+	width: 1000px;
   font-size: 0.80em;
 }
 
