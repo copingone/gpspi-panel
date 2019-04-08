@@ -98,21 +98,21 @@ a:hover {
 }
 
 .coord {
-  width: 300px;
+  width: 150px;
 	font-weight: bold;
 	color: #C4F7A1;
 	font-size: 1.0em;
 }
 
 .timelabel {
-	width: 100px;
+	width: 80px;
 	font-weight: normal;
 	color: #C4F7A1;
 	font-size: 0.85em;
 }
 
 .time {
-	width: 280px;
+	width: 150px;
 	font-weight: bold;
 	color: #C4F7A1;
 	font-size: 1.0em;
