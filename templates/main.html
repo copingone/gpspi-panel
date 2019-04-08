@@ -150,8 +150,8 @@
 			}
 			if(document.getElementById("defaultChecked2ang").checked == true) {
 				// document.getElementById("entfwink").style.display="block";
-				calculateDistanceAndAngle();
-			} 
+				calculateDistanceAndAngle(lon, lat);
+			}
 			// else {
 			// 	document.getElementById("entfwink").style.display="none";
 			// }
@@ -235,7 +235,7 @@
 		// b1, l1: Breite und Länge des ersten Punkts
 		// b2, l2: Breite und Länge des zweiten Punkts
 		// disang: zweielementiges Array für die Aufnahme des Ergebnisses: Entfernung in km und Winkel
-		function calculateDistanceAndAngle() {
+		function calculateDistanceAndAngle(lon, lat) {
 
 			if (typeof loni== 'undefined') {
 				alert("Bitte Ziel-Koordinaten eingeben!");
@@ -243,13 +243,12 @@
 			}
 			var b1 = lat;
 			var l1 = lon;
-			var b2 = parseFloat(lati);
-			var l2 = parseFloat(loni);
+			var b2 = parseFloat(document.getElementById("htmlcoordlat").value);
+			var l2 = parseFloat(document.getElementById("htmlcoordlong").value);
 
 		  var minDist = 0.001 / 60; //erst ab dieser Koordinatenentfernung rechnen wir
 		  var R0 = 6371.0; //mittlerer Erdradius
 		  var a, b, c, alpha, beta, gamma, kc, bearing; //Hilfsvariablen
-
 		  if ((Math.abs(l1 - l2) < minDist) &&
 		      (Math.abs(b1 - b2) < minDist)) {
 		    disang[0] = 0;
