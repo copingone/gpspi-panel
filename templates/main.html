@@ -25,7 +25,7 @@
 	<link rel="stylesheet" href="assets/css/ol.css" type="text/css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="assets/css/stylef.css" rel="stylesheet">
+    <link href="assets/css/stylee.css" rel="stylesheet">
 		<link href="assets/css/numpad.css" rel="stylesheet">
     <script src="assets/js/jquery-3.2.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
@@ -149,7 +149,12 @@
 				});
 			}
 			if(document.getElementById("defaultChecked2ang").checked == true) {
+				// document.getElementById("entfwink").style.display="block";
 				calculateDistanceAndAngle(lon, lat);
+			}
+			// else {
+			// 	document.getElementById("entfwink").style.display="none";
+			// }
 		}
 
 		function searchmarker() {
@@ -180,6 +185,7 @@
 		function sqr(x) {
 		  return Math.pow(x, 2);
 		} //sqr
+
 
 		// Liefert eine Himmelsrichtung anhand des uebergebenen Winkels zurueck
 		function kompassRichtung(deg) {
@@ -224,6 +230,7 @@
 		  }
 		  return richtungen[degidx];
 		} //kompassRichtung
+
 
 		// b1, l1: Breite und Länge des ersten Punkts
 		// b2, l2: Breite und Länge des zweiten Punkts
@@ -355,12 +362,10 @@
 			<button type="button" class="btn btn-outline-primary" id="toggleskymap" onclick="toggleskymap();">Satelliten Karte</button>
 			<button type="button" class="btn btn-outline-primary" id="togglegpsdetails" onclick="togglegpsdetails();">GPS Info</button>
 			<button type="button" class="btn btn-outline-primary" id="toggleinput" onclick="toggleinput();">Koordinaten eingeben</button>
+			<button type="button" class="btn btn-outline-primary" id="toggleentfwink">
+			<input type="checkbox" class="custom-control-input" id="defaultChecked2ang"> Winkel berechnen</button>
 			<button type="button" class="btn btn-outline-primary" id="togglecentering">
-			<label><input type="checkbox" class="custom-control-input" id="defaultChecked2ang"> Winkel berechnen</label></button>
-			<button type="button" class="btn btn-outline-primary" id="togglecentering">
-			<label><input type="checkbox" class="custom-control-input" id="defaultChecked2"> Karte zentrieren</label></button>
-			<button type="button" class="btn btn-outline-primary" id="togglerecording">
-			<label><input type="checkbox" class="custom-control-input" id="defaultChecked2"> Aufzeichnen</label></button>
+			<input type="checkbox" class="custom-control-input" id="defaultChecked2"> Karte zentrieren</button>
   </div>
 	<div class="container">
 		<div class="info">
