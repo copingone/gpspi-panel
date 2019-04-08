@@ -22,7 +22,7 @@ body {
   background-color: #393D46;
   color: #A5B452;
   text-align: left;
-  font-size: 20px;
+  font-size: 13px;
 
 }
 
@@ -85,10 +85,12 @@ a:hover {
 	color: grey;
 }
 
-#coordtime span {
-	display: inline-block;
-	border: 0px solid;
-	text-align: left;
+.destination {
+  color: #f44242;
+}
+
+.posit {
+  color: #00d807;
 }
 
 .coordlabel {
@@ -124,7 +126,7 @@ a:hover {
 
 #inputcontainer {
 	width: 1000px;
-  height: 400px
+  height: 100px
 }
 
 #mapcontainer, #skymapcontainer, #gpsdetailscontainer {

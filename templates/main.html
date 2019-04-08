@@ -25,7 +25,7 @@
 	<link rel="stylesheet" href="assets/css/ol.css" type="text/css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="assets/css/sy.css" rel="stylesheet">
+    <link href="assets/css/stylo.css" rel="stylesheet">
 		<link href="assets/css/numpad.css" rel="stylesheet">
     <script src="assets/js/jquery-3.2.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
@@ -95,7 +95,7 @@
 					anchor: [0.5, 1.0],
 					anchorXUnits: 'fraction',
 					anchorYUnits: 'fraction',
-					src: 'assets/img/marker.png'
+					src: 'assets/img/markergreen.png'
 				})
 			});
 
@@ -381,13 +381,13 @@
 			  <tbody>
 			    <tr>
 			      <th scope="row">Position</th>
-			      <td id="latitude">Lat</td>
-			      <td id="longitude">Long</td>
+			      <td id="latitude" class="posit">Lat</td>
+			      <td id="longitude" class="posit">Long</td>
 			    </tr>
 			    <tr>
-			      <th scope="row">Ziel</th>
-			      <td id="latitudes">Lat</td>
-			      <td id="longitudes">Long</td>
+			      <th scope="row" class="destination">Ziel</th>
+			      <td id="latitudes" class="destination">Lat</td>
+			      <td id="longitudes"class="destination">Long</td>
 			    </tr>
 			  </tbody>
 			</table>
@@ -401,13 +401,13 @@
 			  <tbody>
 			    <tr>
 			      <th scope="row"></th>
-			      <td>Uhrzeit:<span id="gtime"></span></td>
-			      <td>Entfernungs:<span id="distan"></span></td>
+			      <td>Uhrzeit: <span id="gtime"></span></td>
+			      <td>Entfernung: <span id="distan"></span></td>
 			    </tr>
 			    <tr>
 			      <th scope="row"></th>
 			      <td>Richtungswinkel: <span id="angle"></span></td>
-			      <td>Kompass Richtung: <span id="compa"></span></td>
+			      <td>Kompass-Richtung: <span id="compa"></span></td>
 			    </tr>
 			  </tbody>
 			</table>
