@@ -36,12 +36,6 @@ body {
   background-color: #333;
 }
 
-.cruly * {
-  color: #C4F7A1;
-  align: justify;
-  font-size: 18px;
-}
-
 .topnav a {
   float: left;
   color: #A5B452;
@@ -78,13 +72,6 @@ a:hover {
 	text-align: left;
 }
 
-#coordtime {
-	width: 1000px;
-	font-weight: bold;
-	font-size:0.85em;
-	color: grey;
-}
-
 .destination {
   color: #f44242;
 }
@@ -93,31 +80,24 @@ a:hover {
   color: #00d807;
 }
 
-.coordlabel {
-	font-weight: normal;
-	color: #C4F7A1;
-	font-size: 0.85em;
+.info {
+  font-size: 1.3em;
+  font-weight: bold;
 }
 
-.coord {
-  width: 150px;
-	font-weight: bold;
-	color: #C4F7A1;
-	font-size: 1.0em;
+#lat1{
+  position: fixed;
+  left: 100px;
 }
 
-.timelabel {
-	width: 80px;
-	font-weight: normal;
-	color: #C4F7A1;
-	font-size: 0.85em;
+#lon1{
+  position: fixed;
+  left: 340px;
 }
 
-.time {
-	width: 240px;
-	font-weight: bold;
-	color: #C4F7A1;
-	font-size: 0.91em;
+#dii{
+  position: fixed;
+  left: 340px;
 }
 
 #displayctl {
