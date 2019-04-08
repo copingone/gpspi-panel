@@ -159,6 +159,23 @@
 			togglemap()
 		}
 
+		function deg2rad(d) {
+		  //return (Math.PI * d / 180.0);
+		  return d * RAD;
+		} //deg2rad
+
+		// Umwandlung Bogenmaß => Grad
+		function rad2deg(r) {
+		  //return (180.0 * r / Math.PI);
+		  return r / RAD;
+		} //rad2deg
+
+		// Implementierung der Funktion "Quadrat" (return = x^2)
+		function sqr(x) {
+		  return Math.pow(x, 2);
+		} //sqr
+
+
 		// Liefert eine Himmelsrichtung anhand des uebergebenen Winkels zurueck
 		function kompassRichtung(deg) {
 
@@ -394,7 +411,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="distanceangle">
+		<div class="entfwink">
 			<input type="text" name="" id="b1" value="">
 			<input type="text" name="" id="l1" value="">
 			<input type="text" name="" id="b2" value="">
