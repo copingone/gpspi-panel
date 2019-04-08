@@ -158,6 +158,10 @@
 			iconFeaturemark.setGeometry(new ol.geom.Point(ol.proj.transform([parseFloat(loni), parseFloat(lati)], 'EPSG:4326', 'EPSG:3857')));
 			togglemap()
 		}
+		const ha_1 = 6378137.0; //grosse Halbachse = Ellipsoid_Equatorialradius
+		const ha_2 = 6356752.314; //kleine Halbachse
+		const UTMScaleFactor = 0.9996;
+		const RAD = Math.PI / 180.0;
 
 		function deg2rad(d) {
 		  //return (Math.PI * d / 180.0);
