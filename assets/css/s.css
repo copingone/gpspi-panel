@@ -1,0 +1,191 @@
+/*
+  Copyright(c) 2017 Radek Kaczorek  <rkaczorek AT gmail DOT com>
+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License version 2 as published by the Free Software Foundation.
+
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+
+ You should have received a copy of the GNU Library General Public License
+ along with this library; see the file COPYING.LIB.  If not, write to
+ the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ Boston, MA 02110-1301, USA.
+*/
+
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  background-color: #393D46;
+  color: #A5B452;
+  text-align: left;
+  font-size: 20px;
+
+}
+
+.map {
+  height: 464px;
+  width: 1000px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.cruly * {
+  color: #C4F7A1;
+  align: justify;
+  font-size: 18px;
+}
+
+.topnav a {
+  float: left;
+  color: #A5B452;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: #5C573E;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: #C4F7A1;
+}
+
+a {
+	color: #C4F7A1;
+}
+
+a:hover {
+        color: red;
+}
+
+.warning {
+    color: red;
+}
+
+.container {
+  width: 1000px;
+	text-align: left;
+}
+
+#coordtime {
+	width: 1000px;
+	font-weight: bold;
+	font-size:0.85em;
+	color: grey;
+}
+
+#coordtime span {
+	display: inline-block;
+	border: 0px solid;
+	text-align: left;
+}
+
+.coordlabel {
+	font-weight: normal;
+	color: #C4F7A1;
+	font-size: 0.85em;
+}
+
+.coord {
+  width: 300px;
+	font-weight: bold;
+	color: #C4F7A1;
+	font-size: 1.0em;
+}
+
+.timelabel {
+	width: 100px;
+	font-weight: normal;
+	color: #C4F7A1;
+	font-size: 0.85em;
+}
+
+.time {
+	width: 280px;
+	font-weight: bold;
+	color: #C4F7A1;
+	font-size: 1.0em;
+}
+
+#displayctl {
+	width: 1000px;
+}
+
+#inputcontainer {
+	width: 1000px;
+}
+
+#mapcontainer, #skymapcontainer, #gpsdetailscontainer {
+	width: 1000px;
+}
+
+#mapcontainer {
+	display:block;
+}
+
+#skymapcontainer {
+	display:none;
+}
+
+#gpsdetailscontainer {
+	display:none;
+}
+#inputcontainer {
+	display:none;
+}
+
+#map {
+  height: 464px;
+  width: 1000px;
+}
+
+#skymap {
+	display: block;
+    width: 340px;
+    height: 340px;
+    margin: 20px auto 0px auto;
+}
+
+#legend {
+    text-align: left;
+    width: 460px;
+    font-size: 0.75em;
+}
+
+#gpsdetails {
+	display: block;
+	width: 1000px;
+  font-size: 0.80em;
+}
+
+#gpsinfo {
+	display: inline-block;
+	vertical-align: top;
+	width: 45%;
+}
+#gpssats {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#gpsfix {
+	font-size: 2.0em;
+	text-align: center;
+}
+
+table, th, td {
+	border: none;
+	font-size: 1.0em;
+	color: #C4F7A1;
+}
