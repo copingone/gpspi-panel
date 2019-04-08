@@ -149,11 +149,12 @@
 				});
 			}
 			if(document.getElementById("defaultChecked2ang").checked == true) {
-				document.getElementById("entfwink").style.display="block";
+				// document.getElementById("entfwink").style.display="block";
 				calculateDistanceAndAngle();
-			} else {
-				document.getElementById("entfwink").style.display="none";
-			}
+			} 
+			// else {
+			// 	document.getElementById("entfwink").style.display="none";
+			// }
 		}
 
 		function searchmarker() {
@@ -390,8 +391,8 @@
 		</div>
 		<div class="entfwink">
 			<!-- <input type="submit" name="" value="" onmousedown="calculateDistanceAndAngle()"> -->
-			<span class="coordlabel"><b>Entfernung: </b></span><span id="distan" class="coord"></span>
-			<span class="coordlabel"><b>Richtungswinkel: </b></span><span id="angle" class="coord"></span>
+			<span class="coordlabel"><b>Entfernung: </b></span><span id="distan" class="coord"></span><br>
+			<span class="coordlabel"><b>Richtungswinkel: </b></span><span id="angle" class="coord"></span><br>
 			<span class="coordlabel"><b>Kompass Richtung: </b></span><span id="compa" class="coord"></span>
 		</div>
 		<div id="mapcontainer">
