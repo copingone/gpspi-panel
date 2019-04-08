@@ -369,25 +369,54 @@
 			<input type="checkbox" class="custom-control-input" id="defaultChecked2" checked> Karte zentrieren</button>
   </div>
 	<div class="container">
-		<h1>GPS Information</h1>
-		<div id="coordtime">
-			<span class="coordlabel"><b>Latitude: </b></span><span id="latitude" class="coord"></span>
-			<span class="coordlabel"><b>Longitude: </b></span><span id="longitude" class="coord"></span><br />
-			<span class="timelabel"><b>UTC Zeit: </b></span><span id="gtime" class="time"></span>
-			<span class="coordlabel"><b>Destination Latitude: </b></span><span id="latitudes" class="coord"></span>
-			<span class="coordlabel"><b>Destination Longitude: </b></span><span id="longitudes" class="coord"></span><br />
+		<div class="info">
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col"></th>
+			      <th scope="col">Latitude</th>
+			      <th scope="col">Longitude</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <th scope="row">Position</th>
+			      <td id="latitude">Lat</td>
+			      <td id="longitude">Long</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Ziel</th>
+			      <td id="latitudes">Lat</td>
+			      <td id="longitudes">Long</td>
+			    </tr>
+			  </tbody>
+			</table>
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col"></th>
+			      <th scope="col"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <th scope="row"></th>
+			      <td>Uhrzeit:<span id="gtime"></span></td>
+			      <td>Entfernungs:<span id="distan"></span></td>
+			    </tr>
+			    <tr>
+			      <th scope="row"></th>
+			      <td>Richtungswinkel: <span id="angle"></span></td>
+			      <td>Kompass Richtung: <span id="compa"></span></td>
+			    </tr>
+			  </tbody>
+			</table>
 		</div>
 		<div id="inputcontainer">
 			<p>Bitte Koordinaten eingeben:</p>
 			<input type="text" id="htmlcoordlat" value="">
 			<input type="text" id="htmlcoordlong" value="">
 			<input type="button" id="sumbit" class="btn btn-outline-primary" value="Suche" onmousedown="searchmarker()">
-		</div>
-		<div class="entfwink">
-			<!-- <input type="submit" name="" value="" onmousedown="calculateDistanceAndAngle()"> -->
-			<span class="coordlabel"><b>Entfernung: </b></span><span id="distan" class="coord"></span><br>
-			<span class="coordlabel"><b>Richtungswinkel: </b></span><span id="angle" class="coord"></span><br>
-			<span class="coordlabel"><b>Kompass Richtung: </b></span><span id="compa" class="coord"></span>
 		</div>
 		<div id="mapcontainer">
 			<div id="map" class="map">
