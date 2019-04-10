@@ -46,16 +46,38 @@
 			// 	geometry: new ol.geom.LineString([lonlat, location2])
 			// });
 
-			var offlinel = new ol.layer.Tile({
-				source: new ol.source.XYZ({
-					url: 'http://localhost:8625/assets/tilesgoogle/{z}/{x}/{y}.png'
-        			})
-			});
+			// var offlinel = new ol.layer.Tile({
+			// 	source: new ol.source.XYZ({
+			// 		url: 'http://localhost:8625/assets/tilesgoogle/{z}/{x}/{y}.png'
+      //   			})
+			// });
+
+			// create TMS layer using MBTiles sqlite database
+      var mbTiles = new ol.Layer.TMS("Local MBTiles File", "assets/mbtiles.php", {
+          getURL: mbtilesURL,
+          attribution: "",
+          transitionEffect: "resize",
+          isBaseLayer: false,
+          opacity: 0.7
+      });
+      // See: http://www.maptiler.org/google-maps-coordinates-tile-bounds-projection
+      function mbtilesURL (bounds) {
+          var db = "assets/geography-class.mbtiles";
+          var res = this.map.getResolution();
+          var x = Math.round ((bounds.left - this.maxExtent.left) / (res * this.tileSize.w));
+          var y = Math.round ((this.maxExtent.top - bounds.top) / (res * this.tileSize.h));
+          var z = this.map.getZoom();
+          // Deal with Bing layers zoom difference...
+          if (this.map.baseLayer.CLASS_NAME == 'OpenLayers.Layer.VirtualEarth' || this.map.baseLayer.CLASS_NAME == 'OpenLayers.Layer.Bing') {
+             z = z + 1;
+          }
+          return this.url+"?db="+db+"&z="+z+"&x="+x+"&y="+((1 << z) - y - 1);
+      }
 
 			map = new ol.Map({
 				target: "map",
 				layers: [
-					offlinel
+					mbTiles
 				],
 				view: new ol.View({
 					center: ol.proj.fromLonLat([lon, lat]),
