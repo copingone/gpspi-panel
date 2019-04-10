@@ -98,7 +98,7 @@ def background_thread():
 #		except:
 #			pass
 
-		socketio.sleep(1)
+		socketio.sleep(0.5)
 
 def skymap(satellites):
 	# set image size
